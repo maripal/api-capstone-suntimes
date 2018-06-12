@@ -16,16 +16,19 @@ function getGeocodingData(searchInput) {
 		$.getJSON(GOOGLE_GEOCODING_URL, query, function(data) {
 			let latitudeNum = data.results[0].geometry.location.lat;
 			let longitudeNum = data.results[0].geometry.location.lng;
-			console.log("This is the geocoding data: " + latitudeNum + " & " + longitudeNum);
+			//variables for get sun data function date parameter
 			let currentDate = new Date();
 			let day = currentDate.getDate(); 
 			let monthIndex = currentDate.getMonth() + 1; 
 			let year = currentDate.getFullYear(); 
 			let completeDate = year + "-" + monthIndex + "-" + day;
+			//get today's times
 			getSunData(latitudeNum, longitudeNum, completeDate);
+			//get tomorrow's times
 				 day++;
 				completeDate = year + "-" + monthIndex + "-" + day;
 			getSunData(latitudeNum, longitudeNum, completeDate);
+			//get day after tomorrow's times
 				 day++;
 				completeDate = year + "-" + monthIndex + "-" + day;
 			getSunData(latitudeNum, longitudeNum, completeDate);
@@ -62,33 +65,35 @@ function displaySunTimes(data) {
 	newSunsetDate.setUTCHours(newSunsetDate.getHours());
 	newSunsetDate.setUTCMinutes(newSunsetDate.getMinutes());
 
+
 	//Just keep the date & time from date
-	let displaySunriseTime = `${newSunriseDate}`.slice(0,24);
+	let displaySunriseTime = `${newSunriseDate}`.slice(0,21);
 	let displaySunsetTime = `${newSunsetDate}`.slice(16, 24);
 	
-	formatTimeToStandardTime(displaySunsetTime);
-	//get next day times
-	//let nextDaySunriseTime = new Date(todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + (todayDate.getDate() + 1) + " " + utcSunriseVariable);
-	//console.log(nextDaySunriseTime);
+	displaySunsetTime = formatTimeToStandardTime(displaySunsetTime);
 	
-		let dayName = 'Today';
+	let dayName = 'Today';
 		let dayNumber = todayDate.getDay() + count;
-		if (dayNumber == 7) {
+		if (dayNumber === 7) {
 			dayNumber = 0;
-		}
-			if (count > 0) {
+		} else if (dayNumber === 8) {
+			dayNumber = 1;
+		} else if (count > 0) {
 				dayName = weekday[dayNumber];
 			}
-	$('.js-sunrise-sunset-times').append(`<h2>${dayName}</h2><p>Sunrise Time: ${displaySunriseTime}</p>
-		<p>Sunset Time: ${displaySunsetTime}</p>`);
+		
+	$('.js-sunrise-sunset-times').append(`<div class="sun-times-display">
+										<div class="row"><div class="col-12">
+										<h2>${dayName}</h2><p>Sunrise Time: ${displaySunriseTime}</p>
+										<p>Sunset Time: ${displaySunsetTime}</p>
+										</div></div></div>`);
+	
 	count++;
-
 }
 
-//functino to convert military time to standard time (it works only when printing to console but doesn't actually convert time in DOM)
+//function to convert military time to standard time (it works only when printing to console but doesn't actually convert time in DOM)
 function formatTimeToStandardTime(timeToConvert) {
 	let timeArray = timeToConvert.split(":");
-	console.log(timeArray);
 
 	let timeValue;
 
@@ -105,15 +110,12 @@ function formatTimeToStandardTime(timeToConvert) {
 	}
 	 
 	timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes
-	timeValue += (seconds < 10) ? ":0" + seconds : ":" + seconds;  // get seconds
+	//timeValue += (seconds < 10) ? ":0" + seconds : ":" + seconds;  // get seconds
 	timeValue += (hours >= 12) ? " P.M." : " A.M.";  // get AM/PM
+	
 	console.log(timeValue);
+	return timeValue;
 }
-
-/*function getNextTwoDaysTimes(sunrise, sunset, time) {
-	let tmrwsTimes = new Date(sunrise.getFullYear() + "-" + (sunrise.getMonth() + 1) + "-" + (sunrise.getDate() + 1)) + " " + time;
-	console.log(tmrwsTimes);
-}*/
 
 //function to get data from OpenWeatherMap API
 function getWeatherData(lat, long) {
@@ -134,24 +136,23 @@ function renderWeatherData(data) {
 //function to display weather info
 function displayWeatherInfo(data) {
 	let newHtml = "";
-	
+
 	//16 covers  hrs of 2 days
 	for (let i = 1; i <= 16; i++) {
 		let timeDisplay = data.list[i].dt_txt.slice(10, 19);
+			timeDisplay = formatTimeToStandardTime(timeDisplay);
 
 		if (i <= 8) {
 				newHtml += `<div class="hourlyWeatherTop">
-					<p>Time: ${timeDisplay}</p><p>Temp: ${Math.round(data.list[i].main.temp)}</p>
-					<img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
-					<p>${data.list[i].weather[0].description}</p>
-					<p>Wind: ${Math.round(data.list[i].wind.speed)} mph</p>
+					<p class="weather-info">${timeDisplay}</p><p class="weather-info">${Math.round(data.list[i].main.temp) + '&#8457;'}</p>
+					<img class = "weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
+					<p class="weather-info">Wind: ${Math.round(data.list[i].wind.speed)} mph</p>
 					</div>`;
 		} else if (i > 8 && i <= 16) {
 			newHtml += `<div class="hourlyWeatherBottom">
-					<p>Time: ${timeDisplay}</p><p>Temp: ${Math.round(data.list[i].main.temp)}</p>
-					<img src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
-					<p>${data.list[i].weather[0].description}</p>
-					<p>Wind: ${Math.round(data.list[i].wind.speed)} mph</p>
+					<p class="weather-info">${timeDisplay}</p><p class="weather-info">${Math.round(data.list[i].main.temp) + '&#8457;'}</p>
+					<img class="weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
+					<p class="weather-info">Wind: ${Math.round(data.list[i].wind.speed)} mph</p>
 					</div>`;
 		}
 	}
