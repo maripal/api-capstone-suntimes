@@ -1,0 +1,73 @@
+body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* Responsive Page Styles */
+
+.row {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+.row::before,
+.row::after {
+  display: table;
+  content: '';
+}
+
+.row::after {
+  clear: both;
+}
+
+.col-12 {
+  float: left;
+  padding-left: 1.04166666%;
+  padding-right: 1.04166666%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+/* End of responsive page styles */
+
+input[type=text] {
+	width: 300px;
+	height: 20px;
+	padding-left: 5px;
+	border-radius: 2px;
+}
+
+header, main, .js-sunrise-sunset-times {
+	text-align: center;
+}
+
+.hourlyWeatherTop {
+	background-color: gray;
+	display: inline-block;
+	width: 100px;
+	margin-left: 15px;
+}
+
+.hourlyWeatherBottom {
+	background-color: #ddd;
+	display: inline-block;
+	width: 100px;
+	margin-left: 15px;
+}
+
+/* Media queries */
+
+@media only screen and (max-width: 600px) {
+  
+  .col-12 {
+    width: 100%;
+  }
+  
+}
+
+
