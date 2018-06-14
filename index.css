@@ -26,13 +26,13 @@ body {
   clear: both;
 }
 
-.col-4 {
+.col-4, .col-12 {
   float: left;
   padding-left: 1.04166666%;
   padding-right: 1.04166666%;
 }
 
-.col-4{
+.col-4, .col-12{
   width: 100%;
 }
 /* end of responsive code */
@@ -76,7 +76,8 @@ header, main {
 	display: inline-block;
 	width: 12%;
 	text-align: center;
-}
+	margin-bottom: 20px;
+} 
 
 /* Media queries */
 @media only screen and (min-width: 640px) {
@@ -86,10 +87,7 @@ header, main {
 
 .js-sunrise-sunset-times div:nth-last-child(-n+2) {
 	width: 33.3%;
-}
 
-.js-results-page {
-	position: relative;
 }
 
 .js-weather-section {
@@ -100,35 +98,8 @@ header, main {
 	margin-top: 20px;
 }
 
-.weatherIcon {
-	width: 60%;
-}
-
-.hourlyWeatherTop {
-	margin-bottom: 45px;
-}
-
-}
-
-@media only screen and (min-width: 1024px) {
-	.col-12 {
-    width: 100%;
-  }
-
-.js-sunrise-sunset-times div:nth-last-child(-n+2) {
-	width: 33.3%;
-}
-
-.js-results-page {
-	position: relative;
-}
-
 .js-weather-section {
-	width: 65.1%;
-	position: absolute;
-	top: 205px;
-	right: 5px;
-	margin-top: 20px;
+	width: 65%;
 }
 
 .weatherIcon {
@@ -140,6 +111,7 @@ header, main {
 }
 
 }
+
 
 
 
