@@ -4,7 +4,10 @@ body {
 	padding: 0;
 }
 
-/* Responsive Page Styles */
+/* Code to make page responsive */
+* {
+  box-sizing: border-box;
+}
 
 .row {
   max-width: 1000px;
@@ -23,129 +26,129 @@ body {
   clear: both;
 }
 
-.col-3, .col-4, .col-6, .col-12 {
+.col-4 {
   float: left;
   padding-left: 1.04166666%;
   padding-right: 1.04166666%;
 }
 
-.col-3, .col-4, .col-6, .col-12 {
+.col-4{
   width: 100%;
 }
+/* end of responsive code */
 
-/* End of responsive page styles */
-
-input[type=text] {
-	width: 300px;
-	height: 20px;
-	padding-left: 5px;
-	border-radius: 2px;
+header, main {
+	text-align: center;
 }
 
-.searchButton {
-	width: 70px;
+.js-sunrise-sunset-times {
 	background-color: lightblue;
+	margin-top: 50px;
+}
+
+.sun-times-display {
+	background-color: lightcoral;
+	text-align: center;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	border-radius: 3px;
-	border: 1px solid lightblue;
-	letter-spacing: 1px;
-}
-
-header, main, .js-sunrise-sunset-times {
-	text-align: center;
-}
-
-
-.sun-times-display:nth-last-child(-n+2) {
-	background-color: lightblue;
-	width: 30%;
-	height: 150px;
-	margin-left: 10px;
 	margin-bottom: 10px;
 }
 
-.js-weather-section {
-	display: inline-block;
-	width: 70%;
-	position: absolute;
-	right: 5px;
-	top: 242px;
-	height: 300px;
-	text-align: center;
-}
 
-.hourlyWeatherTop {
-	background-color: gray;
-	display: inline-block;
-	width: 105px;
-	margin-left: 20px;
-	height: 150px;
-	margin-bottom: 10px;
-}
-
-.weather-info{
-	display: inline-block;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	padding-right: 5px;
-	padding-left: 5px;
-	text-align: center;
+.weather-info {
+	margin: 0;
+	padding-top: 10px;
 }
 
 .weatherIcon {
-	display: block;
-	margin: 0 auto;
-}
-
-
-.hourlyWeatherBottom {
-	background-color: gray;
-	display: inline-block;
-	width: 105px;
-	margin-left: 20px;
-	margin-bottom: 10px;
-	height: 150px;
-}
-
-section {
-	margin-bottom: 50px;
-}
-
-/* Media queries */
-
-@media only screen and (max-width: 600px) {
-  
-	.col-3 {
-    width: 25%;
-  }
-
-  /* 4 columns */
-  .col-4 {
-    width: 33.3%;
-  }
-
-  /* 6 columns */
-  .col-6 {
-    width: 50%;
-  }
-
-  .col-12 {
-    width: 100%;
-  }
-  
-  .sun-times-display:nth-last-child(-n+2) {
-	background-color: lightblue;
-	width: 40%;
-}
-
-.js-weather-section {
-	width: 50%;
+	width: 100%;
 }
 
 .hourlyWeatherTop {
+	background-color: #ddd;
 	display: inline-block;
+	width: 12%;
+	text-align: center;
 }
+
+.hourlyWeatherBottom {
+	background-color: #eee;
+	display: inline-block;
+	width: 12%;
+	text-align: center;
 }
+
+/* Media queries */
+@media only screen and (min-width: 640px) {
+.col-12 {
+    width: 100%;
+  }
+
+.js-sunrise-sunset-times div:nth-last-child(-n+2) {
+	width: 33.3%;
+}
+
+.js-results-page {
+	position: relative;
+}
+
+.js-weather-section {
+	width: 65.1%;
+	position: absolute;
+	top: 205px;
+	right: 3px;
+	margin-top: 20px;
+}
+
+.weatherIcon {
+	width: 60%;
+}
+
+.hourlyWeatherTop {
+	margin-bottom: 45px;
+}
+
+}
+
+@media only screen and (min-width: 1024px) {
+	.col-12 {
+    width: 100%;
+  }
+
+.js-sunrise-sunset-times div:nth-last-child(-n+2) {
+	width: 33.3%;
+}
+
+.js-results-page {
+	position: relative;
+}
+
+.js-weather-section {
+	width: 65.1%;
+	position: absolute;
+	top: 205px;
+	right: 5px;
+	margin-top: 20px;
+}
+
+.weatherIcon {
+	width: 60%;
+}
+
+.hourlyWeatherTop {
+	margin-bottom: 45px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
