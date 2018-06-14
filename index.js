@@ -83,10 +83,9 @@ function displaySunTimes(data) {
 			}
 		
 	$('.js-sunrise-sunset-times').append(`<div class="sun-times-display">
-										<div class="row"><div class="col-12">
 										<h2>${dayName}</h2><p>Sunrise Time: ${displaySunriseTime}</p>
 										<p>Sunset Time: ${displaySunsetTime}</p>
-										</div></div></div>`);
+										</div>`);
 	
 	count++;
 }
@@ -146,13 +145,11 @@ function displayWeatherInfo(data) {
 				newHtml += `<div class="hourlyWeatherTop">
 					<p class="weather-info">${timeDisplay}</p><p class="weather-info">${Math.round(data.list[i].main.temp) + '&#8457;'}</p>
 					<img class = "weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
-					<p class="weather-info">Wind: ${Math.round(data.list[i].wind.speed)} mph</p>
 					</div>`;
 		} else if (i > 8 && i <= 16) {
 			newHtml += `<div class="hourlyWeatherBottom">
 					<p class="weather-info">${timeDisplay}</p><p class="weather-info">${Math.round(data.list[i].main.temp) + '&#8457;'}</p>
 					<img class="weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
-					<p class="weather-info">Wind: ${Math.round(data.list[i].wind.speed)} mph</p>
 					</div>`;
 		}
 	}
