@@ -14,6 +14,8 @@ function getGeocodingData(searchInput) {
 		key: GEOCODING_API_KEY
 	}
 		$.getJSON(GOOGLE_GEOCODING_URL, query, function(data) {
+			$('.js-sunrise-sunset-times').html('');
+			count = 0;
 			let latitudeNum = data.results[0].geometry.location.lat;
 			let longitudeNum = data.results[0].geometry.location.lng;
 			//variables for get sun data function date parameter
@@ -86,7 +88,6 @@ function displaySunTimes(data) {
 										<h2>${dayName}</h2><p>Sunrise Time: ${displaySunriseTime}</p>
 										<p>Sunset Time: ${displaySunsetTime}</p>
 										</div>`);
-	
 	count++;
 }
 
@@ -136,17 +137,29 @@ function renderWeatherData(data) {
 function displayWeatherInfo(data) {
 	let newHtml = "";
 
+	//for loop to get weather for next two days only
+	let iLowerLimit, iUpperLimit, maxLength;
+
+    for (let i = 0; i < 15; i++){
+        if (data.list[i].dt_txt.slice(11,13) == "00"){
+            iLowerLimit = i;
+            iUpperLimit = i + 7;
+            maxLength = i + 15;
+            break;
+        }
+    }
+
 	//16 covers  hrs of 2 days
-	for (let i = 1; i <= 16; i++) {
+	for (let i = iLowerLimit; i <= maxLength; i++) {
 		let timeDisplay = data.list[i].dt_txt.slice(10, 19);
 			timeDisplay = formatTimeToStandardTime(timeDisplay);
 
-		if (i <= 8) {
+		if (i <= iUpperLimit) {
 				newHtml += `<div class="hourlyWeatherTop">
 					<p class="weather-info">${timeDisplay}</p><p class="weather-info">${Math.round(data.list[i].main.temp) + '&#8457;'}</p>
 					<img class = "weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
 					</div>`;
-		} else if (i > 8 && i <= 16) {
+		} else if (i > iUpperLimit && i <= maxLength) {
 			newHtml += `<div class="hourlyWeatherBottom">
 					<p class="weather-info">${timeDisplay}</p><p class="weather-info">${Math.round(data.list[i].main.temp) + '&#8457;'}</p>
 					<img class="weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
