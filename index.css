@@ -91,16 +91,13 @@ header, main {
 }
 
 .js-weather-section {
-	width: 65.1%;
+	width: 63%;
 	position: absolute;
-	top: 205px;
-	right: 3px;
+	top: 315px;
+	right: 10px;
 	margin-top: 20px;
 }
 
-.js-weather-section {
-	width: 65%;
-}
 
 .weatherIcon {
 	width: 60%;
