@@ -2,6 +2,8 @@ body {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	background: url('https://images.unsplash.com/photo-1501362343565-93d7318347cf?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9&s=61d0a580dea6bb08c380872ece25ab13') no-repeat fixed center 100%;
+	background-size: cover;
 }
 
 /* Code to make page responsive */
@@ -41,14 +43,66 @@ header, main {
 	text-align: center;
 }
 
+.pageTitle {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 700;
+	font-size: 45px;
+}
+
+input[type=text] {
+	width: 200px;
+	padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.searchButton {
+	margin-left: 5px;
+    width: 70px;
+    background-color: lightblue;
+    border-radius: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.js-today-time {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.js-today-time > .sun-times-display {
+	background: transparent;
+}
+
 .sun-times-display {
-	background-color: lightcoral;
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.5);
 	text-align: center;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	margin-bottom: 10px;
 }
 
+.dayNameDisplay {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 700;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+.currentDateDisplay {
+	margin-top: 0px;
+}
+
+.currentDateDisplay, .sunriseSunsetTimeDisplay {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+}
+
+.js-weather-section, .js-weather-section-two {
+	margin-left: 4%;
+}
 
 .weather-info {
 	margin: 0;
