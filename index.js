@@ -14,7 +14,10 @@ function getGeocodingData(searchInput) {
 		key: GEOCODING_API_KEY
 	}
 		$.getJSON(GOOGLE_GEOCODING_URL, query, function(data) {
+			$('.js-today-time').html('');
 			$('.js-sunrise-sunset-times').html('');
+			$('.js-sunrise-sunset-times-two').html('');
+			$('.js-weather-section-two').html('');
 			count = 0;
 			let latitudeNum = data.results[0].geometry.location.lat;
 			let longitudeNum = data.results[0].geometry.location.lng;
@@ -89,7 +92,8 @@ function displaySunTimes(data) {
 		
 	$('.js-sunrise-sunset-times').append(`<div class="sun-times-display">
 										<h2 class="dayNameDisplay">${dayName}</h2><p class="currentDateDisplay">${dateDisplay}</p>
-										<p class="sunriseSunsetTimeDisplay">Sunrise: ${displaySunriseTime} | Sunset: ${displaySunsetTime}</p>
+										<p class="sunriseSunsetTimeDisplay">Sunrise: ${displaySunriseTime} <i class="fas fa-sun fa-lg" id="sunIcon"></i>
+										Sunset: ${displaySunsetTime}</p>
 										</div>`);
 
 	//take first times div & place it on its own row
@@ -201,7 +205,6 @@ function submitButton() {
 		queryTarget.val("");
 		console.log(locationSearch);
 		getGeocodingData(locationSearch);
-
 	})
 }
 
