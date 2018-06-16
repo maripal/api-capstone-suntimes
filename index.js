@@ -1,4 +1,4 @@
-const GOOGLE_GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json?';
+ const GOOGLE_GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const SUN_TIME_URL = 'https://api.sunrise-sunset.org/json?';
 const OPENWEATHER_URL = 'https://api.openweathermap.org/data/2.5/forecast?';
 const GEOCODING_API_KEY = 'AIzaSyCURxb9nsZKOIeFoWRCA_rBMbzprn78-u0';
@@ -76,10 +76,11 @@ function displaySunTimes(data) {
 	
 	let dayName = 'Today';
 		let dayNumber = todayDate.getDay() + count;
+		console.log("This is the day number: " + dayNumber);
 		if (dayNumber === 7) {
-			dayNumber = 0;
+			dayName = weekday[0]
 		} else if (dayNumber === 8) {
-			dayNumber = 1;
+			dayName = weekday[1];
 		} else if (count > 0) {
 				dayName = weekday[dayNumber];
 			}
@@ -88,6 +89,14 @@ function displaySunTimes(data) {
 										<h2>${dayName}</h2><p>Sunrise Time: ${displaySunriseTime}</p>
 										<p>Sunset Time: ${displaySunsetTime}</p>
 										</div>`);
+
+	//take first times div & place it on its own row
+	$('.sun-times-display').eq(0).appendTo('.js-today-time');
+
+	//take last times div & place it on its own row
+	let thirdDayTime = $('.sun-times-display').eq(2);
+	$(thirdDayTime).appendTo('.js-sunrise-sunset-times-two').eq(1);
+	
 	count++;
 }
 
@@ -131,6 +140,7 @@ function getWeatherData(lat, long) {
 //function to render weather results 
 function renderWeatherData(data) {
 	$('.js-weather-section').html(displayWeatherInfo(data));
+	$('.hourlyWeatherBottom').appendTo('.js-weather-section-two').eq(1);
 }
 
 //function to display weather info
