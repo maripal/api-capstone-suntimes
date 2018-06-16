@@ -69,9 +69,11 @@ function displaySunTimes(data) {
 
 
 	//Just keep the date & time from date
-	let displaySunriseTime = `${newSunriseDate}`.slice(0,21);
+	let displaySunriseTime = `${newSunriseDate}`.slice(16,21);
 	let displaySunsetTime = `${newSunsetDate}`.slice(16, 24);
+	let dateDisplay = `${newSunriseDate}`.slice(4,15);
 	
+	displaySunriseTime = formatTimeToStandardTime(displaySunriseTime);
 	displaySunsetTime = formatTimeToStandardTime(displaySunsetTime);
 	
 	let dayName = 'Today';
@@ -86,8 +88,8 @@ function displaySunTimes(data) {
 			}
 		
 	$('.js-sunrise-sunset-times').append(`<div class="sun-times-display">
-										<h2>${dayName}</h2><p>Sunrise Time: ${displaySunriseTime}</p>
-										<p>Sunset Time: ${displaySunsetTime}</p>
+										<h2 class="dayNameDisplay">${dayName}</h2><p class="currentDateDisplay">${dateDisplay}</p>
+										<p class="sunriseSunsetTimeDisplay">Sunrise: ${displaySunriseTime} | Sunset: ${displaySunsetTime}</p>
 										</div>`);
 
 	//take first times div & place it on its own row
