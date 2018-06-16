@@ -43,7 +43,16 @@ header, main {
 	text-align: center;
 }
 
+header {
+	margin-top: 70px;
+}
+
+section {
+	margin-top: 25px;
+}
+
 .pageTitle {
+	color: white;
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 700;
 	font-size: 45px;
@@ -54,17 +63,27 @@ input[type=text] {
 	padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
-    border: 1px solid black;
+    border: 1px solid #969696;
     border-radius: 3px;
+    background-color: #3a516f;
+    color: white;
+    font-size: 12px;
 }
 
 .searchButton {
 	margin-left: 5px;
     width: 70px;
-    background-color: lightblue;
+    color: white;
+    letter-spacing: 1px;
+    background-color: #feb832;
+    border: 1px solid #feb832;
     border-radius: 2px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+#sunIcon {
+	color: #ff9b2a;
 }
 
 .js-today-time {
@@ -114,18 +133,18 @@ input[type=text] {
 }
 
 .hourlyWeatherTop {
-	background-color: #ddd;
+	background-color: #c7a888cc;
 	display: inline-block;
 	width: 12%;
 	text-align: center;
 }
 
 .hourlyWeatherBottom {
-	background-color: #eee;
+	background-color: #c7a888cc;
 	display: inline-block;
 	width: 12%;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 } 
 
 /* Media queries */
@@ -138,12 +157,37 @@ input[type=text] {
  	width: 50%;
  }
 
+ .pageTitle {
+ 	font-size: 55px;
+ }
+
 .weatherIcon {
 	width: 60%;
 }
 
 .hourlyWeatherTop {
 	margin-bottom: 45px;
+	transition-property: background;
+  	transition-duration: 1s;
+  	transition-timing-function: linear;
+}
+
+.hourlyWeatherBottom {
+	transition-property: background;
+  	transition-duration: 1s;
+  	transition-timing-function: linear;
+}
+
+.hourlyWeatherTop:hover, .hourlyWeatherBottom:hover {
+  background: #b5b5b7bf;
+}
+
+.js-sunrise-sunset-times, .js-sunrise-sunset-times-two {
+	color: white;
+}
+
+.dayNameDisplay {
+	color: black;
 }
 
 }
