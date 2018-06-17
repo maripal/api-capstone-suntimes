@@ -6,7 +6,7 @@
 	<title>API Capstone Project</title>
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu:400,700" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
 
 <main role="main">
 	<div class="searchLocationPage">
-		<form action="#" class="js-search-location">
+		<form action="#" name="suntimes-search" class="js-search-location">
 			<label for="js-location-input">
 				<input type="text" id="js-location-input" name="js-location-input" aria-label="search" placeholder="Type location/address here">
 				<button type="submit" class="searchButton">Search</button>
@@ -26,7 +26,7 @@
 </main>
 
 
-<section role="region" class="js-results-page">
+<section class="js-results-page" role="region" aria-live="assertive" hidden>
 	
 	<div class="row">
 		<div class="col-12">
