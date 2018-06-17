@@ -92,7 +92,7 @@ function displaySunTimes(data) {
 		
 	$('.js-sunrise-sunset-times').append(`<div class="sun-times-display">
 										<h2 class="dayNameDisplay">${dayName}</h2><p class="currentDateDisplay">${dateDisplay}</p>
-										<p class="sunriseSunsetTimeDisplay">Sunrise: ${displaySunriseTime} <i class="fas fa-sun fa-lg" id="sunIcon"></i>
+										<p class="sunriseSunsetTimeDisplay">Sunrise: ${displaySunriseTime} <i class="fas fa-sun fa-lg sunFontIcon"></i>
 										Sunset: ${displaySunsetTime}</p>
 										</div>`);
 
@@ -173,12 +173,12 @@ function displayWeatherInfo(data) {
 		if (i <= iUpperLimit) {
 				newHtml += `<div class="hourlyWeatherTop">
 					<p class="weather-info">${timeDisplay}</p><p class="weather-info">${Math.round(data.list[i].main.temp) + '&#8457;'}</p>
-					<img class = "weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
+					<img class = "weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png" alt="weather forecast icon">
 					</div>`;
 		} else if (i > iUpperLimit && i <= maxLength) {
 			newHtml += `<div class="hourlyWeatherBottom">
 					<p class="weather-info">${timeDisplay}</p><p class="weather-info">${Math.round(data.list[i].main.temp) + '&#8457;'}</p>
-					<img class="weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png">
+					<img class="weatherIcon" src="http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png" alt="weather forecast icon">
 					</div>`;
 		}
 	}
@@ -204,6 +204,7 @@ function submitButton() {
 		let locationSearch = queryTarget.val();
 		queryTarget.val("");
 		console.log(locationSearch);
+		$('.js-results-page').prop('hidden', false);
 		getGeocodingData(locationSearch);
 	})
 }
