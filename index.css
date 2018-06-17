@@ -73,7 +73,7 @@ input[type=text] {
 .searchButton {
 	margin-left: 5px;
     width: 70px;
-    color: white;
+    color: black;
     letter-spacing: 1px;
     background-color: #feb832;
     border: 1px solid #feb832;
@@ -82,7 +82,7 @@ input[type=text] {
     padding-bottom: 5px;
 }
 
-#sunIcon {
+.sunFontIcon {
 	color: #ff9b2a;
 }
 
@@ -126,6 +126,8 @@ input[type=text] {
 .weather-info {
 	margin: 0;
 	padding-top: 10px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
 }
 
 .weatherIcon {
@@ -161,6 +163,10 @@ input[type=text] {
  	font-size: 55px;
  }
 
+input[type=text] {
+	width: 300px;
+}
+
 .weatherIcon {
 	width: 60%;
 }
@@ -190,9 +196,63 @@ input[type=text] {
 	color: black;
 }
 
+.weather-info {
+	font-size: 13px;
 }
 
+}
 
+@media only screen and (min-width: 768px) {
+.col-12 {
+    width: 100%;
+  }
+
+ .col-6 {
+ 	width: 50%;
+ }
+
+ .pageTitle {
+ 	font-size: 55px;
+ }
+
+input[type=text] {
+	width: 300px;
+}
+
+.weatherIcon {
+	width: 60%;
+}
+
+.hourlyWeatherTop {
+	margin-bottom: 45px;
+	transition-property: background;
+  	transition-duration: 1s;
+  	transition-timing-function: linear;
+}
+
+.hourlyWeatherBottom {
+	transition-property: background;
+  	transition-duration: 1s;
+  	transition-timing-function: linear;
+}
+
+.hourlyWeatherTop:hover, .hourlyWeatherBottom:hover {
+  background: #b5b5b7bf;
+}
+
+.js-sunrise-sunset-times, .js-sunrise-sunset-times-two {
+	color: white;
+}
+
+.dayNameDisplay {
+	color: black;
+}
+
+.weather-info {
+	font-size: 16px;
+}
+
+}
 
 
 
