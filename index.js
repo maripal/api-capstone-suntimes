@@ -64,21 +64,23 @@ function displaySunTimes(data) {
 	let utcSunsetVariable = sunsetTime;
 	let newSunriseDate = new Date(todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + (todayDate.getDate() + count) + " " + utcSunriseVariable);
 	let newSunsetDate = new Date(todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + (todayDate.getDate() + 1 + count) + " " + utcSunsetVariable);
-
+	
+	//Setting utc to local time
 	newSunriseDate.setUTCHours(newSunriseDate.getHours());
 	newSunriseDate.setUTCMinutes(newSunriseDate.getMinutes());
 	newSunsetDate.setUTCHours(newSunsetDate.getHours());
 	newSunsetDate.setUTCMinutes(newSunsetDate.getMinutes());
-
 
 	//Just keep the date & time from date
 	let displaySunriseTime = `${newSunriseDate}`.slice(16,21);
 	let displaySunsetTime = `${newSunsetDate}`.slice(16, 24);
 	let dateDisplay = `${newSunriseDate}`.slice(4,15);
 	
+	
 	displaySunriseTime = formatTimeToStandardTime(displaySunriseTime);
 	displaySunsetTime = formatTimeToStandardTime(displaySunsetTime);
 	
+	//To get the correct day name
 	let dayName = 'Today';
 		let dayNumber = todayDate.getDay() + count;
 		console.log("This is the day number: " + dayNumber);
@@ -106,7 +108,7 @@ function displaySunTimes(data) {
 	count++;
 }
 
-//function to convert military time to standard time (it works only when printing to console but doesn't actually convert time in DOM)
+//function to convert military time to standard time
 function formatTimeToStandardTime(timeToConvert) {
 	let timeArray = timeToConvert.split(":");
 
@@ -153,7 +155,7 @@ function renderWeatherData(data) {
 function displayWeatherInfo(data) {
 	let newHtml = "";
 
-	//for loop to get weather for next two days only
+	//for loop to get weather for next two days w/ correct times
 	let iLowerLimit, iUpperLimit, maxLength;
 
     for (let i = 0; i < 15; i++){
@@ -165,7 +167,7 @@ function displayWeatherInfo(data) {
         }
     }
 
-	//16 covers  hrs of 2 days
+	
 	for (let i = iLowerLimit; i <= maxLength; i++) {
 		let timeDisplay = data.list[i].dt_txt.slice(10, 19);
 			timeDisplay = formatTimeToStandardTime(timeDisplay);
