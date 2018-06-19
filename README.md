@@ -1,26 +1,28 @@
-#SunTimes
+<h1>SunTimes</h1>
 
 Check it out [here](https://maripal.github.io/api-capstone-suntimes/)
 
-##Screenshots
+<h2>Screenshots</h2>
 
-This is the landing page -
+<p>This is the landing page - </p>
 
 ![](images/HomeScreen.png)
 
-This is the page w/ your search results -
+<p>This is the page w/ your search results - </p>
 
-![](ResultsScreen.png)
+![](images/ResultsScreen.png)
 
-##About SunTimes
+<h2>About SunTimes</h2>
 
-This is app is for those who might want to catch the sunrsise or sunset. 
+<p>This is app is for those who might want to catch the sunrsise or sunset. 
 You type in your location, and it returns the sunrise/sunset times only for the current day. 
-It also returns times and weather for the next two days, so you can plan accordingly. 
+It also returns times and weather for the next two days.</p>
 
-##Technology Used
+<h2>Technology Used</h2>
 
-- HTML
-- CSS
-- JavaScript
-- Jquery
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>Jquery</li>
+</ul>
