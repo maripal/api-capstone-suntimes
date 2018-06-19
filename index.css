@@ -4,7 +4,14 @@ body {
 	padding: 0;
 	background: url('https://images.unsplash.com/photo-1501362343565-93d7318347cf?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9&s=61d0a580dea6bb08c380872ece25ab13') no-repeat fixed center 100%;
 	background-size: cover;
+	position: relative;
+	min-height: 100%;
 }
+
+html {
+	height: 100%;
+}
+
 
 /* Code to make page responsive */
 * {
@@ -49,6 +56,13 @@ header {
 
 section {
 	margin-top: 25px;
+}
+
+footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+ text-align: center;
 }
 
 .pageTitle {
@@ -163,8 +177,29 @@ input[type=text]::placeholder {
 	display: inline-block;
 	width: 12%;
 	text-align: center;
-	margin-bottom: 40px;
+	margin-bottom: 100px;
 } 
+
+.footerText {
+	color: white;
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
+#apiLink {
+	color: orange;
+	font-family: sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.errorMessageText {
+	text-align: center;
+	font-size: 55px;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 125px;
+}
 
 /* Media queries */
 @media only screen and (min-width: 640px) {
@@ -175,6 +210,20 @@ input[type=text]::placeholder {
  .col-6 {
  	width: 50%;
  }
+
+ section {
+ 	min-height: 100%;
+	margin-bottom: -50px;
+}
+
+section:after {
+	content: "";
+	display: block;
+}
+
+footer, section:after {
+	height: 50px;
+}
 
  .pageTitle {
  	font-size: 55px;
