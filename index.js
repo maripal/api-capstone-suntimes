@@ -105,10 +105,10 @@ function displaySunTimes(data) {
 										Sunset: ${displaySunsetTime}</p>
 										</div>`);
 
-	//take first times div & place it on its own row
+	//take todays times div & place it on its own row
 	$('.sun-times-display').eq(0).appendTo('.js-today-time');
 
-	//take last times div & place it on its own row
+	//take last days times div & place it on its own row
 	let thirdDayTime = $('.sun-times-display').eq(2);
 	$(thirdDayTime).appendTo('.js-sunrise-sunset-times-two').eq(1);
 	
@@ -201,6 +201,7 @@ function submitButton() {
 		let locationSearch = queryTarget.val();
 		queryTarget.val("");
 		$('.js-results-page').prop('hidden', false);
+		$('.errorMessageDisplay').prop('hidden', false);
 		getGeocodingData(locationSearch);
 	})
 }
