@@ -195,10 +195,10 @@ input[type=text]::placeholder {
 
 .errorMessageText {
 	text-align: center;
-	font-size: 55px;
+	font-size: 29px;
 	color: white;
 	font-family: 'Montserrat', sans-serif;
-	margin-top: 125px;
+	margin-top: 65px;
 }
 
 /* Media queries */
@@ -266,6 +266,14 @@ input[type=text] {
 	font-size: 13px;
 }
 
+.errorMessageText {
+	text-align: center;
+	font-size: 55px;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 125px;
+}
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -316,6 +324,14 @@ input[type=text] {
 
 .weather-info {
 	font-size: 16px;
+}
+
+.errorMessageText {
+	text-align: center;
+	font-size: 55px;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 125px;
 }
 
 }
