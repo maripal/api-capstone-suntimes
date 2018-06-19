@@ -14,7 +14,8 @@ function getGeocodingData(searchInput) {
 		key: GEOCODING_API_KEY
 	}
 		$.getJSON(GOOGLE_GEOCODING_URL, query, function(data) {
-			$('.js-today-time').html('');
+			if (data !== undefined) {
+	 		$('.js-today-time').html('');
 			$('.js-sunrise-sunset-times').html('');
 			$('.js-sunrise-sunset-times-two').html('');
 			$('.js-weather-section-two').html('');
@@ -37,12 +38,12 @@ function getGeocodingData(searchInput) {
 				 day++;
 				completeDate = year + "-" + monthIndex + "-" + day;
 			getSunData(latitudeNum, longitudeNum, completeDate);
-			getWeatherData(latitudeNum, longitudeNum);
-			//localTimeZonesConversion();
-		}).fail(function (errorMessage) {
-			console.log('another error here');
+			getWeatherData(latitudeNum, longitudeNum); 
+		}
+		}).fail(function (jqXHR, textStatus, errorThrown) {   
+        		$('.js-results-page').html(`<div class="errorMessageText"><p>Something went wrong: ${jqXHR.status}</p></div>`);
 		});
-}
+}	
 
 //function to get data from Sunrise Sunset API (NO APIKEY NEEDED)
 function getSunData(latitude, longitude, date) {
@@ -58,12 +59,12 @@ function getSunData(latitude, longitude, date) {
 function displaySunTimes(data) {
 	let sunriseTime = data.results.sunrise;
 	let sunsetTime = data.results.sunset;
-	console.log("SunTimes jsonp callback is working: " + sunriseTime + " & " + sunsetTime);
+	
 	let todayDate = new Date();
 	let utcSunriseVariable = sunriseTime;
 	let utcSunsetVariable = sunsetTime;
-	let newSunriseDate = new Date(todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + (todayDate.getDate() + count) + " " + utcSunriseVariable);
-	let newSunsetDate = new Date(todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + (todayDate.getDate() + 1 + count) + " " + utcSunsetVariable);
+	let newSunriseDate = new Date(todayDate.getFullYear() + "/" + (todayDate.getMonth() + 1) + "/" + (todayDate.getDate() + count) + " " + utcSunriseVariable);
+	let newSunsetDate = new Date(todayDate.getFullYear() + "/" + (todayDate.getMonth() + 1) + "/" + (todayDate.getDate() + 1 + count) + " " + utcSunsetVariable);
 	
 	//Setting utc to local time
 	newSunriseDate.setUTCHours(newSunriseDate.getHours());
@@ -83,7 +84,6 @@ function displaySunTimes(data) {
 	//To get the correct day name
 	let dayName = 'Today';
 		let dayNumber = todayDate.getDay() + count;
-		console.log("This is the day number: " + dayNumber);
 		if (dayNumber === 7) {
 			dayName = weekday[0]
 		} else if (dayNumber === 8) {
@@ -130,7 +130,6 @@ function formatTimeToStandardTime(timeToConvert) {
 	//timeValue += (seconds < 10) ? ":0" + seconds : ":" + seconds;  // get seconds
 	timeValue += (hours >= 12) ? " P.M." : " A.M.";  // get AM/PM
 	
-	console.log(timeValue);
 	return timeValue;
 }
 
@@ -187,17 +186,6 @@ function displayWeatherInfo(data) {
 		return newHtml;
 }
 
-//function to submit input 
-/*function submitButton() {
-	$('.searchButton').on('click', function(event) {
-		event.preventDefault();
-		let locationSearch = $('#js-location-input').val();
-		//locationSearch.val("");
-		console.log(locationSearch);
-		getGeocodingData(locationSearch);
-	});
-}*/
-
 //function for submit button
 function submitButton() {
 	$('.js-search-location').submit(function(event) {
@@ -205,7 +193,6 @@ function submitButton() {
 		let queryTarget = $(event.currentTarget).find('#js-location-input');
 		let locationSearch = queryTarget.val();
 		queryTarget.val("");
-		console.log(locationSearch);
 		$('.js-results-page').prop('hidden', false);
 		getGeocodingData(locationSearch);
 	})
