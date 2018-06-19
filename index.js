@@ -14,7 +14,9 @@ function getGeocodingData(searchInput) {
 		key: GEOCODING_API_KEY
 	}
 		$.getJSON(GOOGLE_GEOCODING_URL, query, function(data) {
-			if (data !== undefined) {
+			if (data !== undefined && data.results.length != 0) {
+			$('.js-results-page').show();
+			$('.errorMessageDisplay').html('');
 	 		$('.js-today-time').html('');
 			$('.js-sunrise-sunset-times').html('');
 			$('.js-sunrise-sunset-times-two').html('');
@@ -39,9 +41,14 @@ function getGeocodingData(searchInput) {
 				completeDate = year + "-" + monthIndex + "-" + day;
 			getSunData(latitudeNum, longitudeNum, completeDate);
 			getWeatherData(latitudeNum, longitudeNum); 
+		} 
+		else {
+			$('.errorMessageDisplay').html(`<div class="errorMessageText"><p>Something went wrong: That city doesn't exist.</p></div>`);
+        		$('.js-results-page').hide();
 		}
 		}).fail(function (jqXHR, textStatus, errorThrown) {   
-        		$('.js-results-page').html(`<div class="errorMessageText"><p>Something went wrong: ${jqXHR.status}</p></div>`);
+        		$('.errorMessageDisplay').html(`<div class="errorMessageText"><p>Something went wrong: ${jqXHR.status}</p></div>`);
+        		$('.js-results-page').hide();
 		});
 }	
 
