@@ -40,14 +40,15 @@ function getGeocodingData(searchInput) {
 				 day++;
 				completeDate = year + "-" + monthIndex + "-" + day;
 			getSunData(latitudeNum, longitudeNum, completeDate);
-			getWeatherData(latitudeNum, longitudeNum); 
+			getWeatherData(latitudeNum, longitudeNum);
+			$('.js-today-time').html(`<div class="locationContainer"><p class="locationNameDisplay">${searchInput}</p></div><hr>`); 
 		} 
 		else {
 			$('.errorMessageDisplay').html(`<div class="errorMessageText"><p>Something went wrong: That city doesn't exist.</p></div>`);
         		$('.js-results-page').hide();
 		}
 		}).fail(function (jqXHR, textStatus, errorThrown) {   
-        		$('.errorMessageDisplay').html(`<div class="errorMessageText"><p>Something went wrong: ${jqXHR.status}</p></div>`);
+        		$('.errorMessageDisplay').html(`<div class="errorMessageText"><p>Please enter correct location.</p></div>`);
         		$('.js-results-page').hide();
 		});
 }	
@@ -202,6 +203,7 @@ function submitButton() {
 		queryTarget.val("");
 		$('.js-results-page').prop('hidden', false);
 		$('.errorMessageDisplay').prop('hidden', false);
+		$('.pageInfoContainer').hide();
 		getGeocodingData(locationSearch);
 	})
 }
