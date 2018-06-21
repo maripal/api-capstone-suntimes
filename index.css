@@ -6,6 +6,7 @@ body {
 	background-size: cover;
 	position: relative;
 	min-height: 100%;
+	color: white;
 }
 
 html {
@@ -51,10 +52,10 @@ header, main {
 }
 
 header {
-	margin-top: 70px;
+	margin-top: 35px;
 }
 
-section {
+section, main {
 	margin-top: 25px;
 }
 
@@ -63,6 +64,21 @@ footer {
  bottom: 0;
  width: 100%;
  text-align: center;
+ margin-bottom: 10px;
+}
+
+main {
+	min-height: 100%;
+	margin-bottom: -50;
+}
+
+main:after {
+	content: "";
+	display: block;
+}
+
+footer, main:after{
+	height: 50px;
 }
 
 .pageTitle {
@@ -76,12 +92,31 @@ footer {
 .pageInfo {
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 25px;
 	margin-top: 50px;
 }
 
+#landingPageInfo {
+	margin-left: 15px;
+	margin-right: 15px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	line-height: 25px;
+	background-color: #9a9a9aad;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.infoFocus {
+	background-color: #feb832;
+	color: black;
+	font-size: 16px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
 input[type=text] {
-	width: 200px;
+	width: 100%;
 	padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
@@ -89,7 +124,9 @@ input[type=text] {
     border-radius: 3px;
     background-color: #3a516f;
     color: white;
-    font-size: 12px;
+    font-size: 14px;
+    height: 40px;
+    margin-bottom: 15px;
 }
 
 input[type=text]::placeholder {
@@ -97,15 +134,14 @@ input[type=text]::placeholder {
 }
 
 .searchButton {
-	margin-left: 5px;
-    width: 70px;
+    width: 100%;
     color: black;
     letter-spacing: 1px;
     background-color: #feb832;
     border: 1px solid #feb832;
     border-radius: 2px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  	font-size: 14px;
+  	height: 35px;
 }
 
 .searchButton:hover {
@@ -115,6 +151,14 @@ input[type=text]::placeholder {
 
 .sunFontIcon {
 	color: #ff9b2a;
+}
+
+.locationNameDisplay {
+	font-size: 35px;
+	font-family: 'Ubuntu', sans-serif;
+	text-transform: uppercase;
+	margin: 0px;
+	text-align: center;
 }
 
 .js-today-time {
@@ -186,7 +230,7 @@ input[type=text]::placeholder {
 	font-size: 12px;
 }
 
-#apiLink {
+#apiLink, #repoLink{
 	color: orange;
 	font-family: sans-serif;
 	font-size: 12px;
@@ -199,6 +243,12 @@ input[type=text]::placeholder {
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	margin-top: 65px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 /* Media queries */
@@ -216,12 +266,22 @@ input[type=text]::placeholder {
 	margin-bottom: -50px;
 }
 
+main {
+	min-height: 100%;
+	margin-bottom: -50;
+}
+
+main:after {
+	content: "";
+	display: block;
+}
+
 section:after {
 	content: "";
 	display: block;
 }
 
-footer, section:after {
+footer, section:after, main:after{
 	height: 50px;
 }
 
@@ -231,6 +291,19 @@ footer, section:after {
 
 input[type=text] {
 	width: 300px;
+}
+
+.searchButton {
+	width: 100px;
+    color: black;
+    letter-spacing: 1px;
+    background-color: #feb832;
+    border: 1px solid #feb832;
+    border-radius: 2px;
+    font-size: 14px;
+    height: 38px;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 .weatherIcon {
@@ -272,6 +345,31 @@ input[type=text] {
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	margin-top: 125px;
+}
+
+.pageInfo {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 400;
+	font-size: 45px;
+	margin-top: 50px;
+}
+
+#landingPageInfo {
+	margin-left: 40px;
+    margin-right: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+.infoFocus {
+    font-size: 30px;
+    color: black;
+    background-color: #feb832;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 }
@@ -332,6 +430,24 @@ input[type=text] {
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	margin-top: 125px;
+}
+
+#landingPageInfo {
+	margin-left: 40px;
+    margin-right: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+.infoFocus {
+    font-size: 30px;
+    color: black;
+    background-color: #feb832;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 }
