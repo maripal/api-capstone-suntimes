@@ -6,11 +6,11 @@ Check it out [here](https://maripal.github.io/api-capstone-suntimes/)
 
 <p>This is the landing page - </p>
 
-![](images/HomeScreen.png)
+![](images/LandingPage.png)
 
 <p>This is the page w/ your search results - </p>
 
-![](images/ResultsScreen.png)
+![](images/SearchResultsPage.png)
 
 <h2>About SunTimes</h2>
 
