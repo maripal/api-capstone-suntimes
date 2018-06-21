@@ -48,7 +48,7 @@ function getGeocodingData(searchInput) {
         		$('.js-results-page').hide();
 		}
 		}).fail(function (jqXHR, textStatus, errorThrown) {   
-        		$('.errorMessageDisplay').html(`<div class="errorMessageText"><p>Please enter correct location.</p></div>`);
+        		$('.errorMessageDisplay').html(`<div class="errorMessageText"><p>Please enter a correct location.</p></div>`);
         		$('.js-results-page').hide();
 		});
 }	
